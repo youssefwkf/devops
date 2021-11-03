@@ -10,7 +10,6 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Mission;
@@ -26,14 +25,18 @@ import tn.esprit.spring.repository.TimesheetRepository;
 public class TimesheetServiceImpl implements ITimesheetService {
 	
 
-	@Autowired
-	MissionRepository missionRepository;
-	@Autowired
+	@Autowired(required=false)
+	MissionRepository missionRepository ;
+	
+	@Autowired(required=false)
 	DepartementRepository deptRepoistory;
-	@Autowired
+	
+	@Autowired(required=false)
 	TimesheetRepository timesheetRepository;
-	@Autowired
+	
+	@Autowired(required=false)
 	EmployeRepository employeRepository;
+	
 	private static final Logger l = LogManager.getLogger(TimesheetServiceImpl.class);
 	public int ajouterMission(Mission mission) {
 		missionRepository.save(mission);
@@ -109,5 +112,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 	public List<Employe> getAllEmployeByMission(int missionId) {
 		return timesheetRepository.getAllEmployeByMission(missionId);
 	}
+
+	
 
 }
