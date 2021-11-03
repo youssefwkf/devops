@@ -70,5 +70,43 @@ public class TimesheetProjectTest {
 
 		
 	}
+public void testAjouterTimesheet() throws ParseException{
+		//SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		//Date dateDebut = dateFormat.parse("2018/06/24");
+		//Date dateFin = dateFormat.parse("2018/12/24");
+		//int missionId = 5;
+		//int employeId = 2;
+	//	Employe emp = new Employe();
+	//	timesheetService.ajouterEmploye(emp);
+		//List <Mission> missions= timesheetService.findAllMissionByEmployeJPQL(employeId);
+		//System.out.println(missions);
+		//if(! missionRepository.existsById(missionId)){
+			//l.info("mission introuvable");
+		//}
+		//if(! employeRepository.existsById(employeId)){
+			//l.info("employe introuvable");
+		//}
+		//if(dateDebut.after(dateFin)){
+			//l.info("vérifier les dates");
+		//}
+		System.out.println("*********");
+		//try{
+			//if(missionRepository.existsById(missionId) && employeRepository.existsById(employeId) && dateDebut.before(dateFin)){
+				//timesheetService.ajouterTimesheet(missionId, employeId, dateDebut, dateFin);
+			//	System.out.println("*********");
+			//}
+		//}
+		//catch(Exception e){
+			//l.info(e);
+		//}
+		
+		/*finally{
+			List <Mission> missionsCompare= timesheetService.findAllMissionByEmployeJPQL(employeId);
+			assertArrayEquals(missionsCompare.toArray(),missions.toArray());
+
+		}*/
+
+		
+	}
 
 }
