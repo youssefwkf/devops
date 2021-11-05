@@ -12,21 +12,21 @@ import tn.esprit.spring.entities.Timesheet;
 
 public interface IEmployeService {
 	
-	public int ajouterEmploye(Employe employe);
-	public void mettreAjourEmailByEmployeId(String email, int employeId);
-	public void affecterEmployeADepartement(int employeId, int depId);
-	public void desaffecterEmployeDuDepartement(int employeId, int depId);
+	public long ajouterEmploye(Employe employe);
+	public void mettreAjourEmailByEmployeId(String email, long employeId);
+	public void affecterEmployeADepartement(long employeId, int depId);
+	public void desaffecterEmployeDuDepartement(long employeId, int depId);
 	public int ajouterContrat(Contrat contrat);
-	public void affecterContratAEmploye(int contratId, int employeId);
-	public String getEmployePrenomById(int employeId);
-	public void deleteEmployeById(int employeId);
+	public void affecterContratAEmploye(int contratId, long employeId);
+	public String getEmployePrenomById(long employeId);
+	public void deleteEmployeById(long employeId);
 	public void deleteContratById(int contratId);
 	public int getNombreEmployeJPQL();
 	public List<String> getAllEmployeNamesJPQL();
 	public List<Employe> getAllEmployeByEntreprise(Entreprise entreprise);
-	public void mettreAjourEmailByEmployeIdJPQL(String email, int employeId);
+	public void mettreAjourEmailByEmployeIdJPQL(String email, long employeId);
 	public void deleteAllContratJPQL();
-	public float getSalaireByEmployeIdJPQL(int employeId);
+	public float getSalaireByEmployeIdJPQL(long employeId);
 	public Double getSalaireMoyenByDepartementId(int departementId);
 	public List<Employe> getAllEmployes();
 	public List<Timesheet> getTimesheetsByMissionAndDate(Employe employe, Mission mission, 

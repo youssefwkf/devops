@@ -14,7 +14,7 @@ public class TimesheetPK implements Serializable {
 
 	private int idMission;
 	
-	private int idEmploye;
+	private long idEmploye;
 	
 	//Choisir le TemporalType selon le besoin metier
 	@Temporal(TemporalType.DATE)
@@ -28,7 +28,7 @@ public class TimesheetPK implements Serializable {
 		super();
 	}
 	
-	public TimesheetPK(int idMission, int idEmploye, Date dateDebut, Date dateFin) {
+	public TimesheetPK(int idMission, long idEmploye, Date dateDebut, Date dateFin) {
 		super();
 		this.idMission = idMission;
 		this.idEmploye = idEmploye;
@@ -46,7 +46,7 @@ public class TimesheetPK implements Serializable {
 		int result = 1;
 		result = prime * result + ((dateDebut == null) ? 0 : dateDebut.hashCode());
 		result = prime * result + ((dateFin == null) ? 0 : dateFin.hashCode());
-		result = prime * result + idEmploye;
+		result = (int) (prime * result + idEmploye);
 		result = prime * result + idMission;
 		return result;
 	}
@@ -81,11 +81,11 @@ public class TimesheetPK implements Serializable {
 		this.idMission = idMission;
 	}
 
-	public int getIdEmploye() {
+	public long getIdEmploye() {
 		return idEmploye;
 	}
 
-	public void setIdEmploye(int idEmploye) {
+	public void setIdEmploye(long idEmploye) {
 		this.idEmploye = idEmploye;
 	}
 

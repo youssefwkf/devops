@@ -13,7 +13,7 @@ import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Entreprise;
 
 @Repository
-public interface EmployeRepository extends CrudRepository<Employe, Integer>  {
+public interface EmployeRepository extends CrudRepository<Employe, Long>  {
 	
 	Boolean existsById(int id);
 	
@@ -33,7 +33,7 @@ public interface EmployeRepository extends CrudRepository<Employe, Integer>  {
     @Modifying
     @Transactional
     @Query("UPDATE Employe e SET e.email=:email1 where e.id=:employeId")
-    public void mettreAjourEmailByEmployeIdJPQL(@Param("email1")String email, @Param("employeId")int employeId);
+    public void mettreAjourEmailByEmployeIdJPQL(@Param("email1")String email, @Param("employeId")long employeId);
 
     
     @Modifying
@@ -42,7 +42,7 @@ public interface EmployeRepository extends CrudRepository<Employe, Integer>  {
     public void deleteAllContratJPQL();
     
     @Query("select c.salaire from Contrat c join c.employe e where e.id=:employeId")
-    public float getSalaireByEmployeIdJPQL(@Param("employeId")int employeId);
+    public float getSalaireByEmployeIdJPQL(@Param("employeId")long employeId);
     
     
     @Query("Select "

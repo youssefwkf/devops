@@ -8,6 +8,6 @@ import tn.esprit.spring.entities.Mission;
 @Repository
 public interface MissionRepository extends JpaRepository<Mission, Integer> {
 	
-	//Boolean existsById(int id);
+	boolean existsById(int id);
 
 }

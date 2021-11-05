@@ -32,12 +32,12 @@ public class EmployeServiceImpl implements IEmployeService {
 	@Autowired
 	TimesheetRepository timesheetRepository;
 
-	public int ajouterEmploye(Employe employe) {
+	public long ajouterEmploye(Employe employe) {
 		employeRepository.save(employe);
 		return employe.getId();
 	}
 
-	public void mettreAjourEmailByEmployeId(String email, int employeId) {
+	public void mettreAjourEmailByEmployeId(String email, long employeId) {
 		
 		Optional e = employeRepository.findById(employeId);
 		if (e.isPresent()){
@@ -50,7 +50,7 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	@Transactional	
-	public void affecterEmployeADepartement(int employeId, int depId) {
+	public void affecterEmployeADepartement(long employeId, int depId) {
 		Departement depManagedEntity = deptRepoistory.findById(depId).get();
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
 
@@ -67,7 +67,7 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	}
 	@Transactional
-	public void desaffecterEmployeDuDepartement(int employeId, int depId)
+	public void desaffecterEmployeDuDepartement(long employeId, int depId)
 	{
 		Optional departement = deptRepoistory.findById(depId);
 		if(departement.isPresent()){
@@ -88,7 +88,7 @@ public class EmployeServiceImpl implements IEmployeService {
 		return contrat.getReference();
 	}
 
-	public void affecterContratAEmploye(int contratId, int employeId) {
+	public void affecterContratAEmploye(int contratId, long employeId) {
 		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
 
@@ -97,7 +97,7 @@ public class EmployeServiceImpl implements IEmployeService {
 		
 	}
 
-	public String getEmployePrenomById(int employeId) {
+	public String getEmployePrenomById(long employeId) {
 		Optional emp = employeRepository.findById(employeId);
 		if(emp.isPresent()){
 			Employe employeManagedEntity = (Employe) emp.get();
@@ -105,7 +105,7 @@ public class EmployeServiceImpl implements IEmployeService {
 		}
 		return null;
 	}
-	public void deleteEmployeById(int employeId)
+	public void deleteEmployeById(long employeId)
 	{
 		Optional emp = employeRepository.findById(employeId);
 
@@ -146,7 +146,7 @@ public class EmployeServiceImpl implements IEmployeService {
 		return employeRepository.getAllEmployeByEntreprisec(entreprise);
 	}
 
-	public void mettreAjourEmailByEmployeIdJPQL(String email, int employeId) {
+	public void mettreAjourEmailByEmployeIdJPQL(String email, long employeId) {
 		employeRepository.mettreAjourEmailByEmployeIdJPQL(email, employeId);
 
 	}
@@ -154,7 +154,7 @@ public class EmployeServiceImpl implements IEmployeService {
          employeRepository.deleteAllContratJPQL();
 	}
 	
-	public float getSalaireByEmployeIdJPQL(int employeId) {
+	public float getSalaireByEmployeIdJPQL(long employeId) {
 		return employeRepository.getSalaireByEmployeIdJPQL(employeId);
 	}
 

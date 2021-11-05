@@ -25,19 +25,20 @@ import tn.esprit.spring.repository.TimesheetRepository;
 public class TimesheetServiceImpl implements ITimesheetService {
 	
 
-	@Autowired(required=false)
+	@Autowired
 	MissionRepository missionRepository ;
 	
-	@Autowired(required=false)
+	@Autowired
 	DepartementRepository deptRepoistory;
 	
-	@Autowired(required=false)
+	@Autowired
 	TimesheetRepository timesheetRepository;
 	
-	@Autowired(required=false)
+	@Autowired
 	EmployeRepository employeRepository;
 	
 	private static final Logger l = LogManager.getLogger(TimesheetServiceImpl.class);
+	
 	public int ajouterMission(Mission mission) {
 		missionRepository.save(mission);
 		return mission.getId();
@@ -56,7 +57,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		
 	}
 
-	public void ajouterTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin) {
+	public Timesheet ajouterTimesheet(int missionId, long employeId, Date dateDebut, Date dateFin) {
 		TimesheetPK timesheetPK = new TimesheetPK();
 		timesheetPK.setDateDebut(dateDebut);
 		timesheetPK.setDateFin(dateFin);
@@ -64,14 +65,15 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		timesheetPK.setIdMission(missionId);
 		
 		Timesheet timesheet = new Timesheet();
+		
 		timesheet.setTimesheetPK(timesheetPK);
 		timesheet.setValide(false); //par defaut non valide
-		timesheetRepository.save(timesheet);
+		return timesheetRepository.save(timesheet);
 		
 	}
 
 	
-	public void validerTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin, int validateurId) {
+	public void validerTimesheet(int missionId, long employeId, Date dateDebut, Date dateFin, long validateurId) {
 		System.out.println("In valider Timesheet");
 		Employe validateur = employeRepository.findById(validateurId).get();
 		Mission mission = missionRepository.findById(missionId).get();
@@ -104,7 +106,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 	}
 
 	
-	public List<Mission> findAllMissionByEmployeJPQL(int employeId) {
+	public List<Mission> findAllMissionByEmployeJPQL(long employeId) {
 		return timesheetRepository.findAllMissionByEmployeJPQL(employeId);
 	}
 
