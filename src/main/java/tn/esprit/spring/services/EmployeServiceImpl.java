@@ -51,18 +51,19 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	@Transactional	
 	public void affecterEmployeADepartement(long employeId, int depId) {
-		Departement depManagedEntity = deptRepoistory.findById(depId).get();
-		Employe employeManagedEntity = employeRepository.findById(employeId).get();
-
+		Optional depManagedEntityO = deptRepoistory.findById(depId);
+		Optional employeManagedEntity0 = employeRepository.findById(employeId);
+		if(employeManagedEntity0.isPresent()&& depManagedEntityO.isPresent()){
+			Employe employeManagedEntity = (Employe) employeManagedEntity0.get();
+			Departement depManagedEntity = (Departement) depManagedEntityO.get();
 		if(depManagedEntity.getEmployes() == null){
-
 			List<Employe> employes = new ArrayList<>();
 			employes.add(employeManagedEntity);
 			depManagedEntity.setEmployes(employes);
 		}else{
-
 			depManagedEntity.getEmployes().add(employeManagedEntity);
 
+		}
 		}
 
 	}
@@ -89,11 +90,15 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	public void affecterContratAEmploye(int contratId, long employeId) {
-		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
-		Employe employeManagedEntity = employeRepository.findById(employeId).get();
-
-		contratManagedEntity.setEmploye(employeManagedEntity);
-		contratRepoistory.save(contratManagedEntity);
+		Optional contratManagedEntityO = contratRepoistory.findById(contratId);
+		Optional employeManagedEntityO = employeRepository.findById(employeId);
+		if(contratManagedEntityO.isPresent() && employeManagedEntityO.isPresent()){
+			Employe employeManagedEntity = (Employe) employeManagedEntityO.get();
+			Contrat contratManagedEntity = (Contrat) contratManagedEntityO.get();
+			contratManagedEntity.setEmploye(employeManagedEntity);
+			contratRepoistory.save(contratManagedEntity);
+		}
+		
 		
 	}
 

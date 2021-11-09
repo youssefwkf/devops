@@ -1,5 +1,4 @@
-package springTest;
-
+package test;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -33,7 +32,7 @@ import tn.esprit.spring.services.ITimesheetService;
 @ComponentScan(basePackages ={"tn.esprit.spring"})
 public class TimesheetProjectTest {
 	
-	private static final Logger l = LogManager.getLogger(TimesheetProjectTest.class);
+private static final Logger l = LogManager.getLogger(TimesheetProjectTest.class);
 	
 	@Autowired
 	ITimesheetService timesheetService;
@@ -49,10 +48,6 @@ public class TimesheetProjectTest {
 	
 	@Autowired
 	EmployeRepository employeRepository;
-	
-	
-	
-	
 	
 	@Test
 	public void testAjouterTimesheet() throws ParseException{
@@ -90,9 +85,5 @@ public class TimesheetProjectTest {
 
 		
 	}
-
-
-		
-	
 
 }
